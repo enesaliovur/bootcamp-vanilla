@@ -5,7 +5,7 @@ import { Form } from "../UI/Form";
 import { DataContext } from "../context/data";
 
 
-export const AddNote = (props) => {
+export const AddNote = () => {
   const [text, setText] = useState("");
   const [error, setError] = useState();
   const value = useContext(DataContext)

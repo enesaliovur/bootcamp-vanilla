@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { DataContext } from "../context/data";
 
-export const NoteDetails = (props) => {
+export const NoteDetails = () => {
   const value = useContext(DataContext);
   const [data, setData] = useState();
   let { id } = useParams();

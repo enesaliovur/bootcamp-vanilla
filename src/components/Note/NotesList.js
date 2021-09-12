@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { DataContext } from "../context/data";
 import { NotesListItem } from "./NotesListItem";
 
-export const NotesList = (props) => {
-  // const noteList =  useContext(DataContext)
+export const NotesList = () => {
+
   const value = useContext(DataContext)
 
   return (
