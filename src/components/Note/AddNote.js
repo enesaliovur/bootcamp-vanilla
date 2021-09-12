@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ErrorModal } from "../UI/ErrorModal";
 import { v4 as uuidv4 } from "uuid";
 import { Form } from "../UI/Form";
+import { DataContext } from "../context/data";
 
 
 export const AddNote = (props) => {
   const [text, setText] = useState("");
   const [error, setError] = useState();
-
+  const value = useContext(DataContext)
   const addNoteHandler = (e) => {
     e.preventDefault();
     if (text.trim().length === 0) {
@@ -17,7 +18,7 @@ export const AddNote = (props) => {
       });
       return;
     }
-    props.onAddNoteHandler(text, uuidv4());
+    value.addNoteHandler(text, uuidv4());
     setText("");
   };
 

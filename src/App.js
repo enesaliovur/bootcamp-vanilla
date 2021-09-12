@@ -4,6 +4,7 @@ import { NotesList } from "./components/Note/NotesList";
 import { toast } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { NoteDetails } from "./components/Note/NoteDetails";
+import { DataContext } from "./components/context/data";
 
 const App = () => {
   const [noteList, setNotesList] = useState([]);
@@ -19,19 +20,26 @@ const App = () => {
       return prevNoteList.filter((note) => note.id !== id);
     });
   };
+  const value = {
+    noteList,
+    addNoteHandler,
+    deleteNoteHandler,
+  };
+
   return (
-    <Router>
-      <Switch>
-        <Route
-          path="/notes/:id"
-          render={(props) => <NoteDetails notes={noteList} {...props} />}
-        />
-        <Route exact path="/">
-          <AddNote onAddNoteHandler={addNoteHandler} />
-          <NotesList notes={noteList} onDeleteNoteHandler={deleteNoteHandler} />
-        </Route>
-      </Switch>
-    </Router>
+    <DataContext.Provider value={value}>
+      <Router>
+        <Switch>
+          <Route exact path="/notes/:id">
+            <NoteDetails />
+          </Route>
+          <Route exact path="/">
+            <AddNote />
+            <NotesList />
+          </Route>
+        </Switch>
+      </Router>
+    </DataContext.Provider>
   );
 };
 

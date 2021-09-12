@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { DataContext } from "../context/data";
 
 export const NoteDetails = (props) => {
+  const value = useContext(DataContext);
   const [data, setData] = useState();
   let { id } = useParams();
+
   useEffect(() => {
-    setData(props.notes.find((note) => note.id === id));
+    setData(value.noteList.find((note) => note.id === id));
   }, []);
   if (!data) return <div>Not Bulunamadı</div>;
   return (
@@ -15,7 +18,7 @@ export const NoteDetails = (props) => {
       <hr></hr>
       <p>{data.text}</p>
       <hr></hr>
-      <Link to={`/`} >Anasayfa</Link>
+      <Link to={`/`}>Anasayfa</Link>
     </div>
   );
 };
