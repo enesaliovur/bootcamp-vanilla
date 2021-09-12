@@ -10,7 +10,7 @@ export const NoteDetails = (props) => {
   if (!data) return <div>Not Bulunamadı</div>;
   return (
     <div>
-      <h2>{data.id} ID'ye sahip notun detaylar</h2>
+      <h2>{data.id} ID'ye sahip notun detayları</h2>
       <p>{data.text}</p>
     </div>
   );
