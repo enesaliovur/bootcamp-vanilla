@@ -12,7 +12,9 @@ export const NoteDetails = (props) => {
   return (
     <div>
       <h2>{data.id} ID'ye sahip notun detayları</h2>
+      <hr></hr>
       <p>{data.text}</p>
+      <hr></hr>
       <Link to={`/`} >Anasayfa</Link>
     </div>
   );
