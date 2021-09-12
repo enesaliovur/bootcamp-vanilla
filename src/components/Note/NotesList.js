@@ -6,8 +6,9 @@ export const NotesList = (props) => {
     <ul>
 
       {props.notes.map((note) => (
-       <NotesListItem note={note} onDeleteNoteHandler={props.onDeleteNoteHandler}/>
+       <NotesListItem key={note.id} note={note} onDeleteNoteHandler={props.onDeleteNoteHandler}/>
       ))}
+
     </ul>
   );
 };

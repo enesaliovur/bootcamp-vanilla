@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../UI/Button";
 
 export const NotesListItem = (props) => {
@@ -6,9 +7,12 @@ export const NotesListItem = (props) => {
     <li
       style={{ listStyleType: "none" }}
       key={props.note.id}
-      onClick={() => props.onDeleteNoteHandler(props.note.id)}
+      
     >
-      {props.note.text} Silmek için üstüne tıklayınız
+      {props.note.text}
+      <Button onClick={() => props.onDeleteNoteHandler(props.note.id)}>sil</Button>
+      <Link to={`/notes/${props.note.id}`} >Detay Göster</Link>
+
       <hr></hr>
     </li>
   );
